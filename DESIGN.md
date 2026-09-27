@@ -1,4 +1,4 @@
-# DESIGN DIRECTION — TOKO ACC (DIGITAL SHOWROOM & E-KATALOG)
+# DESIGN DIRECTION — Toko Jaya Promosi Lestari (DIGITAL SHOWROOM & E-KATALOG)
 
 ## 1. Identity & Purpose
 - **Brand Purpose:** Digital showroom dan etalase resmi untuk produsen custom merchandise spesialis: Rubber (karet custom), Medali (logam/akrilik kejuaraan & event), dan Gantungan Kunci custom.

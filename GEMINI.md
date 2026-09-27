@@ -1,6 +1,6 @@
 # Project Configuration & Guidelines
 
-This workspace is for **Toko ACC**, an e-catalog and digital showroom for custom rubber, medals, and keychains, developed with Laravel, Blade, Tailwind CSS, and MySQL.
+This workspace is for **Toko Jaya Promosi Lestari**, an e-catalog and digital showroom for custom rubber, medals, and keychains, developed with Laravel, Blade, Tailwind CSS, and MySQL.
 
 Refer to `DESIGN.md` for visual direction, design tokens, and aesthetic principles.
 

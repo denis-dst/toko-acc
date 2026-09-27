@@ -4,116 +4,175 @@
 @section('header_title', 'Pengaturan Informasi Bisnis & Kontak')
 
 @section('content')
-<div class="max-w-4xl bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
-    <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
-        @csrf
+    <div class="max-w-4xl bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+        <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+            @csrf
 
-        <!-- Profil Umum Website -->
-        <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
-                1. Informasi Identitas Bisnis (PRD Section 20)
-            </h3>
+            <!-- Profil Umum Website -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
+                    1. Informasi Identitas Bisnis (PRD Section 20)
+                </h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label for="site_name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Nama Usaha / Website</label>
-                    <input type="text" name="site_name" id="site_name" value="{{ old('site_name', $settings['site_name'] ?? 'Toko ACC') }}" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="site_name"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Nama Usaha /
+                            Website</label>
+                        <input type="text" name="site_name" id="site_name"
+                            value="{{ old('site_name', $settings['site_name'] ?? 'Toko Jaya Promosi Lestari') }}" required
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">
+                    </div>
+
+                    <div>
+                        <label for="tagline"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Tagline /
+                            Slogan</label>
+                        <input type="text" name="tagline" id="tagline"
+                            value="{{ old('tagline', $settings['tagline'] ?? 'Spesialis Custom Rubber, Medali & Gantungan Kunci') }}"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">
+                    </div>
                 </div>
 
                 <div>
-                    <label for="tagline" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Tagline / Slogan</label>
-                    <input type="text" name="tagline" id="tagline" value="{{ old('tagline', $settings['tagline'] ?? 'Spesialis Custom Rubber, Medali & Gantungan Kunci') }}" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">
+                    <label for="description"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Deskripsi Profil
+                        Usaha</label>
+                    <textarea name="description" id="description" rows="3"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('description', $settings['description'] ?? '') }}</textarea>
                 </div>
             </div>
 
-            <div>
-                <label for="description" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Deskripsi Profil Usaha</label>
-                <textarea name="description" id="description" rows="3" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('description', $settings['description'] ?? '') }}</textarea>
-            </div>
-        </div>
+            <!-- Nomor Kontak & WhatsApp -->
+            <div class="space-y-4">
+                <h3
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-700 border-b border-slate-100 pb-2 flex items-center justify-between">
+                    <span>2. Kontak & Nomor WhatsApp Utama (Conversion Engine)</span>
+                    <span class="text-[10px] font-normal text-slate-500 normal-case">Nomor tujuan tombol pesan
+                        WhatsApp</span>
+                </h3>
 
-        <!-- Nomor Kontak & WhatsApp -->
-        <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-700 border-b border-slate-100 pb-2 flex items-center justify-between">
-                <span>2. Kontak & Nomor WhatsApp Utama (Conversion Engine)</span>
-                <span class="text-[10px] font-normal text-slate-500 normal-case">Nomor tujuan tombol pesan WhatsApp</span>
-            </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200">
+                        <label for="whatsapp"
+                            class="block text-xs font-bold uppercase tracking-wider text-emerald-900 mb-1">Nomor WhatsApp
+                            Aktif *</label>
+                        <input type="text" name="whatsapp" id="whatsapp"
+                            value="{{ old('whatsapp', $settings['whatsapp'] ?? '6281234567890') }}" required
+                            placeholder="Contoh: 6281234567890"
+                            class="w-full px-3 py-2 rounded-lg border border-emerald-300 text-sm font-mono font-bold bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-hidden">
+                        <span class="text-[10px] text-emerald-800 mt-1 block">Format: 62812... (tanpa tanda + atau
+                            spasi)</span>
+                    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200">
-                    <label for="whatsapp" class="block text-xs font-bold uppercase tracking-wider text-emerald-900 mb-1">Nomor WhatsApp Aktif *</label>
-                    <input type="text" name="whatsapp" id="whatsapp" value="{{ old('whatsapp', $settings['whatsapp'] ?? '6281234567890') }}" required placeholder="Contoh: 6281234567890" class="w-full px-3 py-2 rounded-lg border border-emerald-300 text-sm font-mono font-bold bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-hidden">
-                    <span class="text-[10px] text-emerald-800 mt-1 block">Format: 62812... (tanpa tanda + atau spasi)</span>
+                    <div>
+                        <label for="phone"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Telepon Teks /
+                            Hotline</label>
+                        <input type="text" name="phone" id="phone"
+                            value="{{ old('phone', $settings['phone'] ?? '0812-3456-7890') }}"
+                            placeholder="Contoh: 0812-3456-7890"
+                            class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="email"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Email Resmi</label>
+                        <input type="email" name="email" id="email"
+                            value="{{ old('email', $settings['email'] ?? 'kontak@tokoacc.com') }}"
+                            placeholder="kontak@tokoacc.com"
+                            class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm">
+                    </div>
                 </div>
 
                 <div>
-                    <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Telepon Teks / Hotline</label>
-                    <input type="text" name="phone" id="phone" value="{{ old('phone', $settings['phone'] ?? '0812-3456-7890') }}" placeholder="Contoh: 0812-3456-7890" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm">
-                </div>
-
-                <div>
-                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Email Resmi</label>
-                    <input type="email" name="email" id="email" value="{{ old('email', $settings['email'] ?? 'kontak@tokoacc.com') }}" placeholder="kontak@tokoacc.com" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm">
-                </div>
-            </div>
-
-            <div>
-                <label for="address" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Alamat Lengkap Workshop</label>
-                <textarea name="address" id="address" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('address', $settings['address'] ?? '') }}</textarea>
-            </div>
-        </div>
-
-        <!-- Lokasi & Jam Operasional -->
-        <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
-                3. Jam Operasional & Google Maps (PRD Section 12)
-            </h3>
-
-            <div>
-                <label for="opening_hours" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Jam Operasional Workshop</label>
-                <textarea name="opening_hours" id="opening_hours" rows="3" placeholder="Senin - Jumat: 08.00 - 17.00 WIB&#10;Sabtu: 08.00 - 15.00 WIB&#10;Minggu: Tutup" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('opening_hours', $settings['opening_hours'] ?? '') }}</textarea>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label for="google_maps_url" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Link Google Maps (Buka Aplikasi)</label>
-                    <input type="text" name="google_maps_url" id="google_maps_url" value="{{ old('google_maps_url', $settings['google_maps_url'] ?? '') }}" placeholder="https://maps.google.com/?q=..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
-                </div>
-
-                <div>
-                    <label for="google_maps_embed" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Google Maps Embed URL (Iframe)</label>
-                    <input type="text" name="google_maps_embed" id="google_maps_embed" value="{{ old('google_maps_embed', $settings['google_maps_embed'] ?? '') }}" placeholder="https://www.google.com/maps/embed?pb=..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    <label for="address"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Alamat Lengkap
+                        Workshop</label>
+                    <textarea name="address" id="address" rows="2"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('address', $settings['address'] ?? '') }}</textarea>
                 </div>
             </div>
-        </div>
 
-        <!-- Media Sosial -->
-        <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
-                4. Akun Media Sosial
-            </h3>
+            <!-- Lokasi & Jam Operasional -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
+                    3. Jam Operasional & Google Maps (PRD Section 12)
+                </h3>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                    <label for="instagram" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Instagram URL</label>
-                    <input type="text" name="instagram" id="instagram" value="{{ old('instagram', $settings['instagram'] ?? '') }}" placeholder="https://instagram.com/..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    <label for="opening_hours"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Jam Operasional
+                        Workshop</label>
+                    <textarea name="opening_hours" id="opening_hours" rows="3"
+                        placeholder="Senin - Jumat: 08.00 - 17.00 WIB&#10;Sabtu: 08.00 - 15.00 WIB&#10;Minggu: Tutup"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-hidden">{{ old('opening_hours', $settings['opening_hours'] ?? '') }}</textarea>
                 </div>
-                <div>
-                    <label for="facebook" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Facebook URL</label>
-                    <input type="text" name="facebook" id="facebook" value="{{ old('facebook', $settings['facebook'] ?? '') }}" placeholder="https://facebook.com/..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
-                </div>
-                <div>
-                    <label for="tiktok" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">TikTok URL</label>
-                    <input type="text" name="tiktok" id="tiktok" value="{{ old('tiktok', $settings['tiktok'] ?? '') }}" placeholder="https://tiktok.com/@..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="google_maps_url"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Link Google Maps
+                            (Buka Aplikasi)</label>
+                        <input type="text" name="google_maps_url" id="google_maps_url"
+                            value="{{ old('google_maps_url', $settings['google_maps_url'] ?? '') }}"
+                            placeholder="https://maps.google.com/?q=..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+
+                    <div>
+                        <label for="google_maps_embed"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Google Maps Embed
+                            URL (Iframe)</label>
+                        <input type="text" name="google_maps_embed" id="google_maps_embed"
+                            value="{{ old('google_maps_embed', $settings['google_maps_embed'] ?? '') }}"
+                            placeholder="https://www.google.com/maps/embed?pb=..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="pt-6 border-t border-slate-100 flex items-center justify-end">
-            <button type="submit" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-md transition-colors">
-                Simpan Semua Pengaturan
-            </button>
-        </div>
-    </form>
-</div>
+            <!-- Media Sosial -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
+                    4. Akun Media Sosial
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label for="instagram"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Instagram
+                            URL</label>
+                        <input type="text" name="instagram" id="instagram"
+                            value="{{ old('instagram', $settings['instagram'] ?? '') }}"
+                            placeholder="https://instagram.com/..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                    <div>
+                        <label for="facebook"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Facebook
+                            URL</label>
+                        <input type="text" name="facebook" id="facebook"
+                            value="{{ old('facebook', $settings['facebook'] ?? '') }}"
+                            placeholder="https://facebook.com/..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                    <div>
+                        <label for="tiktok"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">TikTok URL</label>
+                        <input type="text" name="tiktok" id="tiktok" value="{{ old('tiktok', $settings['tiktok'] ?? '') }}"
+                            placeholder="https://tiktok.com/@..."
+                            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex items-center justify-end">
+                <button type="submit"
+                    class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-md transition-colors">
+                    Simpan Semua Pengaturan
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection

@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@tokoacc.com'],
             [
-                'name' => 'Admin Toko ACC',
+                'name' => 'Admin Toko Jaya Promosi Lestari',
                 'password' => Hash::make('password'),
             ]
         );
 
         // 2. Site Settings
         $settings = [
-            'site_name' => 'Toko ACC',
+            'site_name' => 'Toko Jaya Promosi Lestari',
             'tagline' => 'Spesialis Custom Rubber, Medali & Gantungan Kunci',
             'description' => 'Digital showroom dan workshop pembuatan produk custom rubber PVC, medali kejuaraan, dan gantungan kunci suvenir untuk kebutuhan komunitas, event, sekolah, dan perusahaan.',
             'whatsapp' => '6281234567890',
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 1,
-                'meta_title' => 'Rubber Keychain 3D Custom | Toko ACC Workshop',
+                'meta_title' => 'Rubber Keychain 3D Custom | Toko Jaya Promosi Lestari Workshop',
                 'meta_description' => 'Pesan gantungan kunci rubber PVC custom sesuai desain komunitas, sekolah, dan promosi bisnis Anda.',
             ]
         );
@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 2,
-                'meta_title' => 'Medali Kejuaraan Logam Cor Zinc Alloy | Toko ACC',
+                'meta_title' => 'Medali Kejuaraan Logam Cor Zinc Alloy | Toko Jaya Promosi Lestari',
                 'meta_description' => 'Produksi medali custom die-cast logam cor untuk perlombaan olahraga, kejuaraan, dan event resmi.',
             ]
         );
@@ -150,7 +150,7 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 3,
-                'meta_title' => 'Rubber Patch Velcro Custom | Toko ACC',
+                'meta_title' => 'Rubber Patch Velcro Custom | Toko Jaya Promosi Lestari',
                 'meta_description' => 'Bikin patch emblem karet velcro untuk seragam komunitas, rompi, dan tas tactical.',
             ]
         );
@@ -175,7 +175,7 @@ class DatabaseSeeder extends Seeder
                 'featured' => false,
                 'status' => true,
                 'sort_order' => 4,
-                'meta_title' => 'Gantungan Kunci Metal & Akrilik Grafir | Toko ACC',
+                'meta_title' => 'Gantungan Kunci Metal & Akrilik Grafir | Toko Jaya Promosi Lestari',
                 'meta_description' => 'Merchandise gantungan kunci akrilik laser cut dan pelat logam solid untuk suvenir perusahaan.',
             ]
         );

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Ulasan & Testimoni Pelanggan | ' . ($siteSettings['site_name'] ?? 'Toko ACC'))
+@section('title', 'Ulasan & Testimoni Pelanggan | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
 
-@section('meta_description', 'Ulasan pengalaman nyata pemesan produk custom rubber, medali dan gantungan kunci di workshop Toko ACC.')
+@section('meta_description', 'Ulasan pengalaman nyata pemesan produk custom rubber, medali dan gantungan kunci di workshop Toko Jaya Promosi Lestari.')
 
 @section('content')
 <div class="bg-slate-50 min-h-screen py-12 sm:py-16 border-b border-slate-200">
