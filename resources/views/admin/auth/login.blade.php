@@ -45,13 +45,12 @@
 
             <div>
                 <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Email Admin</label>
-                <input type="email" id="email" name="email" value="{{ old('email', 'admin@tokoacc.com') }}" required autofocus class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-hidden focus:ring-2 focus:ring-slate-900">
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="nama@email.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-hidden focus:ring-2 focus:ring-slate-900">
             </div>
 
             <div>
                 <label for="password" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Password</label>
                 <input type="password" id="password" name="password" required placeholder="Masukkan password" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-hidden focus:ring-2 focus:ring-slate-900">
-                <span class="text-[11px] text-slate-400 mt-1 block">Default akun: admin@tokoacc.com / password</span>
             </div>
 
             <div class="flex items-center justify-between text-xs pt-1">
