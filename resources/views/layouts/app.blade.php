@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    @php
+        $gaMeasurementId = $siteSettings['google_analytics_id'] ?? 'G-QWNZWEXQ7P';
+    @endphp
+    @if(!empty($gaMeasurementId))
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaMeasurementId }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '{{ $gaMeasurementId }}');
+        </script>
+    @endif
+
     <!-- Primary Title & Meta Tags -->
     <title>
         @yield('title', ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' | ' . ($siteSettings['tagline'] ?? 'Pusat Custom Rubber, Cetak Medali & Aksesoris Karet - Jaya Promosi Lestari'))

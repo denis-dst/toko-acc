@@ -167,10 +167,10 @@
                 </div>
             </div>
 
-            <!-- Pengaturan SEO & Google Search Console -->
+            <!-- Pengaturan SEO, Google Search Console & Analytics -->
             <div class="space-y-4">
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
-                    5. Optimasi SEO & Google Search Console
+                    5. Optimasi SEO, Google Search Console & Analytics
                 </h3>
 
                 <div class="grid grid-cols-1 gap-4">
@@ -183,14 +183,26 @@
                             class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
                     </div>
 
-                    <div>
-                        <label for="meta_google_verification"
-                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Kode Google Site Verification (Search Console)</label>
-                        <input type="text" name="meta_google_verification" id="meta_google_verification"
-                            value="{{ old('meta_google_verification', $settings['meta_google_verification'] ?? '') }}"
-                            placeholder="Contoh: google-site-verification=XXXXXXXXXXXXXXXXXXXX"
-                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-mono">
-                        <span class="text-[11px] text-slate-400 mt-1 block">Masukkan kode verifikasi HTML Tag dari Google Search Console untuk memverifikasi kepemilikan domain aksesorisku.store.</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="meta_google_verification"
+                                class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Google Site Verification (Search Console)</label>
+                            <input type="text" name="meta_google_verification" id="meta_google_verification"
+                                value="{{ old('meta_google_verification', $settings['meta_google_verification'] ?? '') }}"
+                                placeholder="google-site-verification=XXXXXXXXXXXXXXXXXXXX"
+                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-mono">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Kode verifikasi kepemilikan Search Console.</span>
+                        </div>
+
+                        <div>
+                            <label for="google_analytics_id"
+                                class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Google Analytics Measurement ID (GA4)</label>
+                            <input type="text" name="google_analytics_id" id="google_analytics_id"
+                                value="{{ old('google_analytics_id', $settings['google_analytics_id'] ?? 'G-QWNZWEXQ7P') }}"
+                                placeholder="Contoh: G-QWNZWEXQ7P"
+                                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-mono">
+                            <span class="text-[11px] text-slate-400 mt-1 block">Google Tag / GA4 ID untuk pelacakan trafik pengunjung.</span>
+                        </div>
                     </div>
                 </div>
             </div>
