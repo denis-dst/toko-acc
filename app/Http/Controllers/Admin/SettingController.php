@@ -36,10 +36,17 @@ class SettingController extends Controller
             'youtube',
             'meta_keywords',
             'meta_google_verification',
+            'google_analytics_id',
         ];
 
         foreach ($fields as $field) {
-            SiteSetting::set($field, $request->input($field));
+            $val = $request->input($field);
+            if ($field === 'google_maps_embed' && !empty($val)) {
+                if (preg_match('/src=[\'"]([^\'"]+)[\'"]/i', $val, $matches)) {
+                    $val = $matches[1];
+                }
+            }
+            SiteSetting::set($field, $val);
         }
 
         if ($request->hasFile('logo')) {

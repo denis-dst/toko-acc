@@ -132,12 +132,20 @@
                 </div>
 
                 <!-- Right Google Maps Embed -->
+                @php
+                    $rawEmbed = $siteSettings['google_maps_embed'] ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2648080653157!2d107.58943557405446!3d-6.978049768329252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e96e616a4fef%3A0xa479cad17299b64b!2sSovenir%20karet%20cahaya%20lestari!5e0!3m2!1sen!2sid!4v1790502156537!5m2!1sen!2sid';
+                    if (preg_match('/src=[\'"]([^\'"]+)[\'"]/i', $rawEmbed, $matches)) {
+                        $mapEmbedUrl = $matches[1];
+                    } else {
+                        $mapEmbedUrl = trim($rawEmbed);
+                    }
+                @endphp
                 <div
                     class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs h-[480px] sm:h-[540px]">
                     <iframe
-                        src="{{ $siteSettings['google_maps_embed'] ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.86877708892!2d107.5731165!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e215b5!2sBandung%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid' }}"
+                        src="{{ $mapEmbedUrl }}"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Workshop Toko Jaya Promosi Lestari">
+                        referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Workshop Aksesorisku.store - Jaya Promosi Lestari">
                     </iframe>
                 </div>
 
