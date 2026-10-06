@@ -5,82 +5,91 @@
 @section('meta_description', $product->meta_description ?: ($product->name . ' custom berkualitas presisi langsung dari workshop Jaya Promosi Lestari di Aksesorisku.store.'))
 
 @section('schema_breadcrumb')
+@php
+    $breadcrumbItems = [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Home',
+            'item' => url('/')
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Katalog',
+            'item' => route('products.index')
+        ]
+    ];
+
+    if ($product->category) {
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => $product->category->name,
+            'item' => route('products.category', $product->category->slug)
+        ];
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => 4,
+            'name' => $product->name,
+            'item' => url()->current()
+        ];
+    } else {
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => $product->name,
+            'item' => url()->current()
+        ];
+    }
+
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbItems
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ url('/') }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Katalog",
-      "item": "{{ route('products.index') }}"
-    }
-    @if($product->category)
-    ,{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "{{ $product->category->name }}",
-      "item": "{{ route('products.category', $product->category->slug) }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "{{ $product->name }}",
-      "item": "{{ url()->current() }}"
-    }
-    @else
-    ,{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "{{ $product->name }}",
-      "item": "{{ url()->current() }}"
-    }
-    @endif
-  ]
-}
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
 @section('schema_product')
+@php
+    $productSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product->name,
+        'image' => [
+            $product->primaryImage ? $product->primaryImage->url : asset('images/products/rubber-keychain-1.jpg')
+        ],
+        'description' => strip_tags($product->short_description ?: $product->description),
+        'sku' => 'PROD-' . $product->id,
+        'brand' => [
+            '@type' => 'Brand',
+            'name' => 'Aksesorisku.store (Jaya Promosi Lestari)'
+        ],
+        'manufacturer' => [
+            '@type' => 'Organization',
+            'name' => 'Jaya Promosi Lestari'
+        ],
+        'offers' => [
+            '@type' => 'Offer',
+            'url' => url()->current(),
+            'priceCurrency' => 'IDR',
+            'price' => (string) ($product->price ?: 8500),
+            'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
+            'itemCondition' => 'https://schema.org/NewCondition',
+            'availability' => 'https://schema.org/InStock',
+            'seller' => [
+                '@type' => 'Organization',
+                'name' => 'Aksesorisku.store'
+            ]
+        ]
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{{ $product->name }}",
-  "image": [
-    "{{ $product->primaryImage ? $product->primaryImage->url : asset('images/products/rubber-keychain-1.jpg') }}"
-  ],
-  "description": "{{ strip_tags($product->short_description ?: $product->description) }}",
-  "sku": "PROD-{{ $product->id }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "Aksesorisku.store (Jaya Promosi Lestari)"
-  },
-  "manufacturer": {
-    "@type": "Organization",
-    "name": "Jaya Promosi Lestari"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "{{ url()->current() }}",
-    "priceCurrency": "IDR",
-    "price": "{{ $product->price ?: 8500 }}",
-    "priceValidUntil": "{{ date('Y-12-31', strtotime('+1 year')) }}",
-    "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
-    "seller": {
-      "@type": "Organization",
-      "name": "Aksesorisku.store"
-    }
-  }
-}
+{!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 

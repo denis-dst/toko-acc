@@ -5,25 +5,28 @@
 @section('meta_description', 'Lokasi bengkel workshop tempat produksi aksesoris karet, print rubber, dan cetak medali Jaya Promosi Lestari di Aksesorisku.store.')
 
 @section('schema_breadcrumb')
+@php
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => url('/')
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => 'Lokasi Workshop',
+                'item' => url()->current()
+            ]
+        ]
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ url('/') }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Lokasi Workshop",
-      "item": "{{ url()->current() }}"
-    }
-  ]
-}
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 

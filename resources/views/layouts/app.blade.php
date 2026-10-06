@@ -19,8 +19,12 @@
     <meta name="author" content="Aksesorisku.store - Jaya Promosi Lestari">
     <link rel="canonical" href="{{ url()->current() }}">
 
-    @if(!empty($siteSettings['meta_google_verification']))
-        <meta name="google-site-verification" content="{{ $siteSettings['meta_google_verification'] }}">
+    @php
+        $rawVerification = $siteSettings['meta_google_verification'] ?? '9Gew-qEbKHJjk-C3SbZRtVwI0nUo4SFLJVGHwOkqd8Y';
+        $googleVerificationCode = str_replace('google-site-verification=', '', $rawVerification);
+    @endphp
+    @if(!empty($googleVerificationCode))
+        <meta name="google-site-verification" content="{{ $googleVerificationCode }}">
     @endif
 
     <!-- Local SEO Geo Tags -->
@@ -46,97 +50,103 @@
         content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber, cetak medali kejuaraan, dan gantungan kunci.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/products/rubber-keychain-1.jpg'))">
 
+    @php
+        $sameAsLinks = array_values(array_filter([
+            $siteSettings['instagram'] ?? null,
+            $siteSettings['facebook'] ?? null,
+            $siteSettings['tiktok'] ?? null,
+            url('/'),
+        ]));
+
+        $schemaOrgGraph = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => ['LocalBusiness', 'Manufacturer'],
+                    '@id' => url('/') . '/#organization',
+                    'name' => $siteSettings['site_name'] ?? 'Aksesorisku.store',
+                    'alternateName' => [
+                        'Jaya Promosi Lestari',
+                        'Toko Jaya Promosi Lestari',
+                        'Aksesorisku',
+                        'Aksesoris Karet Jaya Promosi',
+                        'Aksesorisku Store'
+                    ],
+                    'url' => url('/'),
+                    'logo' => asset('images/products/rubber-keychain-1.jpg'),
+                    'image' => asset('images/products/rubber-keychain-1.jpg'),
+                    'description' => $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber PVC, cetak medali kejuaraan cor logam, dan gantungan kunci oleh Jaya Promosi Lestari.',
+                    'telephone' => $siteSettings['phone'] ?? '+62 823-2617-0804',
+                    'email' => $siteSettings['email'] ?? 'kontak@aksesorisku.store',
+                    'address' => [
+                        '@type' => 'PostalAddress',
+                        'streetAddress' => $siteSettings['address'] ?? 'Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot',
+                        'addressLocality' => 'Kabupaten Bandung',
+                        'addressRegion' => 'Jawa Barat',
+                        'addressCountry' => 'ID'
+                    ],
+                    'priceRange' => 'Rp 8.000 - Rp 50.000',
+                    'openingHoursSpecification' => [
+                        [
+                            '@type' => 'OpeningHoursSpecification',
+                            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                            'opens' => '08:00',
+                            'closes' => '17:00'
+                        ],
+                        [
+                            '@type' => 'OpeningHoursSpecification',
+                            'dayOfWeek' => ['Saturday'],
+                            'opens' => '08:00',
+                            'closes' => '15:00'
+                        ]
+                    ],
+                    'sameAs' => $sameAsLinks,
+                    'hasOfferCatalog' => [
+                        '@type' => 'OfferCatalog',
+                        'name' => 'Layanan Produksi Merchandise & Aksesoris Custom',
+                        'itemListElement' => [
+                            [
+                                '@type' => 'OfferCatalog',
+                                'name' => 'Aksesoris Karet / Print Rubber PVC',
+                                'itemListElement' => [
+                                    ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Gantungan Kunci Karet 3D & 2D Custom']],
+                                    ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Rubber Patch Velcro & Emblem Karet Seragam']],
+                                    ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Wristband / Gelang Karet Custom']]
+                                ]
+                            ],
+                            [
+                                '@type' => 'OfferCatalog',
+                                'name' => 'Cetak Medali Kejuaraan & Wisuda',
+                                'itemListElement' => [
+                                    ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Medali Logam Cor Zinc Alloy Die-Cast']],
+                                    ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Medali Akrilik Cetak UV & Grafir']]
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'WebSite',
+                    '@id' => url('/') . '/#website',
+                    'url' => url('/'),
+                    'name' => $siteSettings['site_name'] ?? 'Aksesorisku.store',
+                    'alternateName' => 'Aksesorisku - Jaya Promosi Lestari',
+                    'publisher' => [
+                        '@id' => url('/') . '/#organization'
+                    ],
+                    'potentialAction' => [
+                        '@type' => 'SearchAction',
+                        'target' => url('/katalog') . '?q={search_term_string}',
+                        'query-input' => 'required name=search_term_string'
+                    ]
+                ]
+            ]
+        ];
+    @endphp
+
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["LocalBusiness", "Manufacturer"],
-          "@id": "{{ url('/') }}/#organization",
-          "name": "{{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}",
-          "alternateName": [
-            "Jaya Promosi Lestari",
-            "Toko Jaya Promosi Lestari",
-            "Aksesorisku",
-            "Aksesoris Karet Jaya Promosi",
-            "Aksesorisku Store"
-          ],
-          "url": "{{ url('/') }}",
-          "logo": "{{ asset('images/products/rubber-keychain-1.jpg') }}",
-          "image": "{{ asset('images/products/rubber-keychain-1.jpg') }}",
-          "description": "{{ $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber PVC, cetak medali kejuaraan cor logam, dan gantungan kunci oleh Jaya Promosi Lestari.' }}",
-          "telephone": "{{ $siteSettings['phone'] ?? '+62 823-2617-0804' }}",
-          "email": "{{ $siteSettings['email'] ?? 'kontak@aksesorisku.store' }}",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ $siteSettings['address'] ?? 'Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot' }}",
-            "addressLocality": "Kabupaten Bandung",
-            "addressRegion": "Jawa Barat",
-            "addressCountry": "ID"
-          },
-          "priceRange": "Rp 8.000 - Rp 50.000",
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "08:00",
-              "closes": "17:00"
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Saturday"],
-              "opens": "08:00",
-              "closes": "15:00"
-            }
-          ],
-          "sameAs": [
-            @if(!empty($siteSettings['instagram'])) "{{ $siteSettings['instagram'] }}", @endif
-            @if(!empty($siteSettings['facebook'])) "{{ $siteSettings['facebook'] }}", @endif
-            @if(!empty($siteSettings['tiktok'])) "{{ $siteSettings['tiktok'] }}", @endif
-            "{{ url('/') }}"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Layanan Produksi Merchandise & Aksesoris Custom",
-            "itemListElement": [
-              {
-                "@type": "OfferCatalog",
-                "name": "Aksesoris Karet / Print Rubber PVC",
-                "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gantungan Kunci Karet 3D & 2D Custom" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rubber Patch Velcro & Emblem Karet Seragam" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wristband / Gelang Karet Custom" } }
-                ]
-              },
-              {
-                "@type": "OfferCatalog",
-                "name": "Cetak Medali Kejuaraan & Wisuda",
-                "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medali Logam Cor Zinc Alloy Die-Cast" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medali Akrilik Cetak UV & Grafir" } }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "{{ url('/') }}/#website",
-          "url": "{{ url('/') }}",
-          "name": "{{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}",
-          "alternateName": "Aksesorisku - Jaya Promosi Lestari",
-          "publisher": {
-            "@id": "{{ url('/') }}/#organization"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ url('/katalog') }}?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        }
-      ]
-    }
+    {!! json_encode($schemaOrgGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
     </script>
 
     @yield('schema_breadcrumb')

@@ -5,31 +5,34 @@
 @section('meta_description', Str::limit($portfolio->description, 160))
 
 @section('schema_breadcrumb')
+@php
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => url('/')
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => 'Portofolio',
+                'item' => route('portfolios.index')
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 3,
+                'name' => $portfolio->title,
+                'item' => url()->current()
+            ]
+        ]
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ url('/') }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Portofolio",
-      "item": "{{ route('portfolios.index') }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "{{ $portfolio->title }}",
-      "item": "{{ url()->current() }}"
-    }
-  ]
-}
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 

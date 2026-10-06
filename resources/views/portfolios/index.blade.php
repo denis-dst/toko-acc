@@ -5,25 +5,28 @@
 @section('meta_description', 'Dokumentasi hasil pengerjaan produk custom rubber PVC, cetak medali kejuaraan, dan gantungan kunci suvenir oleh workshop Jaya Promosi Lestari di Aksesorisku.store.')
 
 @section('schema_breadcrumb')
+@php
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => url('/')
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => 'Portofolio',
+                'item' => url()->current()
+            ]
+        ]
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ url('/') }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Portofolio",
-      "item": "{{ url()->current() }}"
-    }
-  ]
-}
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 

@@ -5,53 +5,56 @@
 @section('meta_keywords', 'aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom')
 
 @section('schema_faq')
+@php
+    $faqSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => [
+            [
+                '@type' => 'Question',
+                'name' => 'Apakah Aksesorisku.store adalah etalase resmi dari workshop Jaya Promosi Lestari?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'Ya, Aksesorisku.store adalah website digital showroom dan etalase pemesanan resmi dari Jaya Promosi Lestari, produsen workshop spesialis custom rubber PVC, cetak medali kejuaraan cor logam, dan gantungan kunci suvenir promosi.'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => 'Produk apa saja yang diproduksi oleh workshop Aksesorisku.store?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'Kami memproduksi aneka aksesoris karet (print rubber keychain 2D & 3D, rubber patch velcro untuk seragam komunitas & tas taktis, wristband gelang karet), cetak medali kejuaraan (die-cast zinc alloy emas perak perunggu, medali akrilik printing UV, medali wisuda), dan gantungan kunci metal grafir presisi.'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => 'Bagaimana proses pemesanan aksesoris karet atau cetak medali custom?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'Pemesanan sangat praktis: kirimkan konsep atau file desain Anda via WhatsApp ke workshop kami. Kami akan menghitung estimasi biaya terbaik, membuatkan simulasi cetakan sampel fisik untuk verifikasi, dan memproses produksi massal dengan jaminan kualitas presisi.'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => 'Berapa minimal order (MOQ) untuk pembuatan produk custom di Aksesorisku.store?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'Minimal pemesanan mulai dari 50 pcs hingga 100 pcs tergantung jenis material dan spesifikasi ukuran produk. Untuk pesanan ribuan pcs (skala event atau B2B korporat), kami menyediakan penawaran harga khusus langsung produsen.'
+                ]
+            ],
+            [
+                '@type' => 'Question',
+                'name' => 'Apakah workshop Jaya Promosi Lestari melayani pengiriman ke seluruh Indonesia?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => 'Ya, kami melayani pemesanan dan pengiriman ke seluruh wilayah Indonesia melalui ekspedisi kargo darat, laut, dan udara dengan standar packing aman berlapis bubble wrap dan kardus tebal.'
+                ]
+            ]
+        ]
+    ];
+@endphp
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Apakah Aksesorisku.store adalah etalase resmi dari workshop Jaya Promosi Lestari?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ya, Aksesorisku.store adalah website digital showroom dan etalase pemesanan resmi dari Jaya Promosi Lestari, produsen workshop spesialis custom rubber PVC, cetak medali kejuaraan cor logam, dan gantungan kunci suvenir promosi."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Produk apa saja yang diproduksi oleh workshop Aksesorisku.store?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Kami memproduksi aneka aksesoris karet (print rubber keychain 2D & 3D, rubber patch velcro untuk seragam komunitas & tas taktis, wristband gelang karet), cetak medali kejuaraan (die-cast zinc alloy emas perak perunggu, medali akrilik printing UV, medali wisuda), dan gantungan kunci metal grafir presisi."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Bagaimana proses pemesanan aksesoris karet atau cetak medali custom?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Pemesanan sangat praktis: kirimkan konsep atau file desain Anda via WhatsApp ke workshop kami. Kami akan menghitung estimasi biaya terbaik, membuatkan simulasi cetakan sampel fisik untuk verifikasi, dan memproses produksi massal dengan jaminan kualitas presisi."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Berapa minimal order (MOQ) untuk pembuatan produk custom di Aksesorisku.store?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Minimal pemesanan mulai dari 50 pcs hingga 100 pcs tergantung jenis material dan spesifikasi ukuran produk. Untuk pesanan ribuan pcs (skala event atau B2B korporat), kami menyediakan penawaran harga khusus langsung produsen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah workshop Jaya Promosi Lestari melayani pengiriman ke seluruh Indonesia?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ya, kami melayani pemesanan dan pengiriman ke seluruh wilayah Indonesia melalui ekspedisi kargo darat, laut, dan udara dengan standar packing aman berlapis bubble wrap dan kardus tebal."
-      }
-    }
-  ]
-}
+{!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 

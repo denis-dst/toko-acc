@@ -342,7 +342,8 @@ insert  into `site_settings`(`id`,`key`,`value`,`created_at`,`updated_at`) value
 (12,'facebook','https://facebook.com/tokoacc.custom','2026-09-27 08:59:54','2026-09-27 08:59:54'),
 (13,'tiktok','https://tiktok.com/@tokoacc.custom','2026-09-27 08:59:54','2026-09-27 08:59:54'),
 (14,'youtube',NULL,'2026-09-27 09:42:43','2026-09-27 09:42:43'),
-(15,'meta_keywords','aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom','2026-10-06 17:00:00','2026-10-06 17:00:00');
+(15,'meta_keywords','aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom','2026-10-06 17:00:00','2026-10-06 17:00:00'),
+(16,'meta_google_verification','9Gew-qEbKHJjk-C3SbZRtVwI0nUo4SFLJVGHwOkqd8Y','2026-10-06 17:00:00','2026-10-06 17:00:00');
 
 /*Table structure for table `testimonials` */
 

@@ -18,7 +18,7 @@ return new class extends Migration
                 'description' => 'Digital showroom & workshop produsen aksesoris karet custom (print rubber, rubber patch, wristband), cetak medali kejuaraan (logam cor & akrilik), serta gantungan kunci suvenir oleh Jaya Promosi Lestari.',
                 'email' => 'kontak@aksesorisku.store',
                 'meta_keywords' => 'aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom',
-                'meta_google_verification' => '',
+                'meta_google_verification' => '9Gew-qEbKHJjk-C3SbZRtVwI0nUo4SFLJVGHwOkqd8Y',
             ];
 
             foreach ($settings as $key => $value) {
