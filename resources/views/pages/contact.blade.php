@@ -1,18 +1,41 @@
 @extends('layouts.app')
 
-@section('title', 'Kontak & Konsultasi Langsung | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', 'Kontak & Konsultasi Langsung | ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Jaya Promosi Lestari')
 
-@section('meta_description', 'Hubungi kami melalui WhatsApp, telepon atau kunjungi workshop langsung untuk konsultasi pesanan custom.')
+@section('meta_description', 'Hubungi workshop Aksesorisku.store (Jaya Promosi Lestari) via WhatsApp untuk konsultasi aksesoris karet, print rubber, dan cetak medali.')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kontak",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
 
     @php
-        $rawPhone = $siteSettings['whatsapp'] ?? '6281234567890';
+        $rawPhone = $siteSettings['whatsapp'] ?? '6282326170804';
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
         if (str_starts_with($cleanPhone, '0')) {
             $cleanPhone = '62' . substr($cleanPhone, 1);
         }
-        $mainWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Toko Jaya Promosi Lestari, saya ingin konsultasi mengenai pembuatan merchandise custom.");
+        $mainWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Aksesorisku.store (Jaya Promosi Lestari), saya ingin konsultasi mengenai pembuatan merchandise custom.");
     @endphp
 
     <div class="bg-slate-50 min-h-screen py-12 sm:py-16 border-b border-slate-200">
@@ -26,7 +49,7 @@
                 </h1>
                 <p class="text-base text-slate-600 mt-3 leading-relaxed">
                     Kami siap membantu mulai dari perhitungan estimasi harga, rekomendasi material, hingga pengecekan
-                    kesiapan file desain Anda.
+                    kesiapan file desain Anda di workshop Jaya Promosi Lestari.
                 </p>
             </div>
 
@@ -167,33 +190,33 @@
                                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                                     <path
                                         d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                                </svg>
-                                <span>Kirim ke WhatsApp Toko Jaya Promosi Lestari</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                                   </svg>
+                                   <span>Kirim ke WhatsApp Workshop</span>
+                               </button>
+                           </div>
+                       </form>
+                   </div>
 
-            </div>
+               </div>
 
-        </div>
-    </div>
+           </div>
+       </div>
 
-    @push('scripts')
-        <script>
-            document.getElementById('quickInquiryForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const name = document.getElementById('userName').value.trim();
-                const category = document.getElementById('productCategory').value;
-                const qty = document.getElementById('quantity').value.trim() || 'Sesuai rekomendasi';
-                const notes = document.getElementById('notes').value.trim() || 'Tidak ada catatan tambahan';
-                const phone = '{{ $cleanPhone }}';
+       @push('scripts')
+           <script>
+               document.getElementById('quickInquiryForm').addEventListener('submit', function (e) {
+                   e.preventDefault();
+                   const name = document.getElementById('userName').value.trim();
+                   const category = document.getElementById('productCategory').value;
+                   const qty = document.getElementById('quantity').value.trim() || 'Sesuai rekomendasi';
+                   const notes = document.getElementById('notes').value.trim() || 'Tidak ada catatan tambahan';
+                   const phone = '{{ $cleanPhone }}';
 
-                const message = `Halo Toko Jaya Promosi Lestari,\n\nNama / Organisasi: *${name}*\nJenis Produk: *${category}*\nPerkiraan Jumlah: *${qty}*\nCatatan: ${notes}\n\nSaya ingin menanyakan estimasi biaya dan durasi pengerjaannya. Terima kasih.`;
+                   const message = `Halo Aksesorisku.store (Jaya Promosi Lestari),\n\nNama / Organisasi: *${name}*\nJenis Produk: *${category}*\nPerkiraan Jumlah: *${qty}*\nCatatan: ${notes}\n\nSaya ingin menanyakan estimasi biaya dan durasi pengerjaannya. Terima kasih.`;
 
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                window.open(waUrl, '_blank');
-            });
-        </script>
-    @endpush
+                   const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                   window.open(waUrl, '_blank');
+               });
+           </script>
+       @endpush
 @endsection

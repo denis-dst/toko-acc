@@ -328,20 +328,21 @@ CREATE TABLE `site_settings` (
 /*Data for the table `site_settings` */
 
 insert  into `site_settings`(`id`,`key`,`value`,`created_at`,`updated_at`) values 
-(1,'site_name','Jaya Promosi Lestari','2026-09-27 08:59:53','2026-09-27 09:50:33'),
-(2,'tagline','Spesialis Custom Rubber, Medali & Gantungan Kunci','2026-09-27 08:59:53','2026-09-27 08:59:53'),
-(3,'description','Digital showroom dan workshop pembuatan produk custom rubber PVC, medali kejuaraan, dan gantungan kunci suvenir untuk kebutuhan komunitas, event, sekolah, dan perusahaan.','2026-09-27 08:59:53','2026-09-27 08:59:53'),
+(1,'site_name','Aksesorisku.store','2026-09-27 08:59:53','2026-10-06 17:00:00'),
+(2,'tagline','Pusat Custom Rubber, Cetak Medali & Aksesoris Karet | Jaya Promosi Lestari','2026-09-27 08:59:53','2026-10-06 17:00:00'),
+(3,'description','Digital showroom & workshop produsen aksesoris karet custom (print rubber, rubber patch, wristband), cetak medali kejuaraan (logam cor & akrilik), serta gantungan kunci suvenir oleh Jaya Promosi Lestari.','2026-09-27 08:59:53','2026-10-06 17:00:00'),
 (4,'whatsapp','6282326170804','2026-09-27 08:59:53','2026-09-27 09:42:43'),
 (5,'phone','+62 823-2617-0804','2026-09-27 08:59:53','2026-09-27 09:42:43'),
-(6,'email','kontak@tokoacc.com','2026-09-27 08:59:53','2026-09-27 08:59:53'),
+(6,'email','kontak@aksesorisku.store','2026-09-27 08:59:53','2026-10-06 17:00:00'),
 (7,'address','Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot, Kabupaten Bandung, Jawa Barat, Indonesia.','2026-09-27 08:59:53','2026-09-27 09:42:43'),
 (8,'opening_hours','Senin - Jumat: 08.00 - 17.00 WIB\r\nSabtu: 08.00 - 15.00 WIB\r\nMinggu: Libur / Tutup','2026-09-27 08:59:53','2026-09-27 09:42:43'),
-(9,'google_maps_url','https://maps.google.comhttps://maps.app.goo.gl/nk1WTiQheCXuF9ug9','2026-09-27 08:59:53','2026-09-27 09:42:43'),
+(9,'google_maps_url','https://maps.app.goo.gl/nk1WTiQheCXuF9ug9','2026-09-27 08:59:53','2026-09-27 09:42:43'),
 (10,'google_maps_embed','<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2648080653157!2d107.58943557405446!3d-6.978049768329252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e96e616a4fef%3A0xa479cad17299b64b!2sSovenir%20karet%20cahaya%20lestari!5e0!3m2!1sen!2sid!4v1790502156537!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>','2026-09-27 08:59:53','2026-09-27 09:42:43'),
 (11,'instagram','https://instagram.com/tokoacc_custom','2026-09-27 08:59:53','2026-09-27 08:59:53'),
 (12,'facebook','https://facebook.com/tokoacc.custom','2026-09-27 08:59:54','2026-09-27 08:59:54'),
 (13,'tiktok','https://tiktok.com/@tokoacc.custom','2026-09-27 08:59:54','2026-09-27 08:59:54'),
-(14,'youtube',NULL,'2026-09-27 09:42:43','2026-09-27 09:42:43');
+(14,'youtube',NULL,'2026-09-27 09:42:43','2026-09-27 09:42:43'),
+(15,'meta_keywords','aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom','2026-10-06 17:00:00','2026-10-06 17:00:00');
 
 /*Table structure for table `testimonials` */
 

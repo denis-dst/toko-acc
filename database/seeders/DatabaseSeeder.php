@@ -31,19 +31,21 @@ class DatabaseSeeder extends Seeder
 
         // 2. Site Settings
         $settings = [
-            'site_name' => 'Toko Jaya Promosi Lestari',
-            'tagline' => 'Spesialis Custom Rubber, Medali & Gantungan Kunci',
-            'description' => 'Digital showroom dan workshop pembuatan produk custom rubber PVC, medali kejuaraan, dan gantungan kunci suvenir untuk kebutuhan komunitas, event, sekolah, dan perusahaan.',
-            'whatsapp' => '6281234567890',
-            'phone' => '0812-3456-7890',
-            'email' => 'kontak@tokoacc.com',
-            'address' => 'Jl. Industri Kreatif No. 88, Sentra Workshop & Produksi, Jawa Barat, Indonesia',
+            'site_name' => 'Aksesorisku.store',
+            'tagline' => 'Pusat Custom Rubber, Cetak Medali & Aksesoris Karet | Jaya Promosi Lestari',
+            'description' => 'Digital showroom & workshop produsen aksesoris karet custom (print rubber, rubber patch, wristband), cetak medali kejuaraan (logam cor & akrilik), serta gantungan kunci suvenir oleh Jaya Promosi Lestari.',
+            'whatsapp' => '6282326170804',
+            'phone' => '+62 823-2617-0804',
+            'email' => 'kontak@aksesorisku.store',
+            'address' => 'Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot, Kabupaten Bandung, Jawa Barat, Indonesia.',
             'opening_hours' => "Senin - Jumat: 08.00 - 17.00 WIB\nSabtu: 08.00 - 15.00 WIB\nMinggu: Libur / Tutup",
-            'google_maps_url' => 'https://maps.google.com',
-            'google_maps_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.86877708892!2d107.5731165!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e215b5!2sBandung%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid',
+            'google_maps_url' => 'https://maps.app.goo.gl/nk1WTiQheCXuF9ug9',
+            'google_maps_embed' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2648080653157!2d107.58943557405446!3d-6.978049768329252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e96e616a4fef%3A0xa479cad17299b64b!2sSovenir%20karet%20cahaya%20lestari!5e0!3m2!1sen!2sid!4v1790502156537!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             'instagram' => 'https://instagram.com/tokoacc_custom',
             'facebook' => 'https://facebook.com/tokoacc.custom',
             'tiktok' => 'https://tiktok.com/@tokoacc.custom',
+            'meta_keywords' => 'aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom',
+            'meta_google_verification' => '',
         ];
 
         foreach ($settings as $key => $value) {
@@ -100,8 +102,8 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 1,
-                'meta_title' => 'Rubber Keychain 3D Custom | Toko Jaya Promosi Lestari Workshop',
-                'meta_description' => 'Pesan gantungan kunci rubber PVC custom sesuai desain komunitas, sekolah, dan promosi bisnis Anda.',
+                'meta_title' => 'Rubber Keychain 3D Custom | Aksesorisku.store - Jaya Promosi Lestari',
+                'meta_description' => 'Pusat custom gantungan kunci rubber PVC 3D dan 2D dari workshop Jaya Promosi Lestari di Aksesorisku.store.',
             ]
         );
 
@@ -125,8 +127,8 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 2,
-                'meta_title' => 'Medali Kejuaraan Logam Cor Zinc Alloy | Toko Jaya Promosi Lestari',
-                'meta_description' => 'Produksi medali custom die-cast logam cor untuk perlombaan olahraga, kejuaraan, dan event resmi.',
+                'meta_title' => 'Cetak Medali Kejuaraan Logam Zinc Alloy | Aksesorisku.store - Jaya Promosi Lestari',
+                'meta_description' => 'Produksi cetak medali custom die-cast logam cor kejuaraan dan perlombaan di Aksesorisku.store (Jaya Promosi Lestari).',
             ]
         );
 
@@ -150,8 +152,8 @@ class DatabaseSeeder extends Seeder
                 'featured' => true,
                 'status' => true,
                 'sort_order' => 3,
-                'meta_title' => 'Rubber Patch Velcro Custom | Toko Jaya Promosi Lestari',
-                'meta_description' => 'Bikin patch emblem karet velcro untuk seragam komunitas, rompi, dan tas tactical.',
+                'meta_title' => 'Rubber Patch Velcro Custom & Emblem Karet | Aksesorisku.store',
+                'meta_description' => 'Bikin patch emblem karet velcro dan aksesoris karet custom di Aksesorisku.store (Workshop Jaya Promosi Lestari).',
             ]
         );
 
@@ -175,8 +177,8 @@ class DatabaseSeeder extends Seeder
                 'featured' => false,
                 'status' => true,
                 'sort_order' => 4,
-                'meta_title' => 'Gantungan Kunci Metal & Akrilik Grafir | Toko Jaya Promosi Lestari',
-                'meta_description' => 'Merchandise gantungan kunci akrilik laser cut dan pelat logam solid untuk suvenir perusahaan.',
+                'meta_title' => 'Gantungan Kunci Metal & Akrilik Grafir | Aksesorisku.store',
+                'meta_description' => 'Merchandise gantungan kunci akrilik laser cut dan pelat logam solid untuk suvenir perusahaan di Aksesorisku.store.',
             ]
         );
 

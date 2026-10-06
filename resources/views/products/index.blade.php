@@ -1,8 +1,31 @@
 @extends('layouts.app')
 
-@section('title', ($selectedCategory ? $selectedCategory->name . ' - ' : '') . 'Katalog Produk Custom | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', ($selectedCategory ? $selectedCategory->name . ' Custom - ' : '') . 'Katalog Aksesoris Karet, Print Rubber & Cetak Medali | Aksesorisku.store')
 
-@section('meta_description', $selectedCategory ? $selectedCategory->description : 'Katalog lengkap produk custom rubber karet, medali kejuaraan, dan gantungan kunci suvenir.')
+@section('meta_description', $selectedCategory ? $selectedCategory->description : 'Katalog lengkap produk custom print rubber PVC, aksesoris karet, cetak medali kejuaraan logam cor, dan gantungan kunci suvenir dari workshop Jaya Promosi Lestari di Aksesorisku.store.')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ $selectedCategory ? $selectedCategory->name : 'Katalog Produk' }}",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
     <div class="bg-slate-50 min-h-screen py-10 sm:py-14 border-b border-slate-200">
@@ -25,10 +48,10 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
                         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                            {{ $selectedCategory ? $selectedCategory->name : 'Katalog Produk Custom' }}
+                            {{ $selectedCategory ? $selectedCategory->name . ' Custom' : 'Katalog Aksesoris Karet & Cetak Medali' }}
                         </h1>
                         <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl leading-relaxed">
-                            {{ $selectedCategory ? $selectedCategory->description : 'Jelajahi berbagai pilihan spesifikasi rubber PVC, medali kejuaraan, dan gantungan kunci suvenir yang siap diproduksi sesuai desain Anda.' }}
+                            {{ $selectedCategory ? $selectedCategory->description : 'Pilihan spesifikasi print rubber PVC timbul 2D/3D, cetak medali kejuaraan cor zinc alloy, dan gantungan kunci suvenir siap diproduksi di workshop Jaya Promosi Lestari.' }}
                         </p>
                     </div>
 

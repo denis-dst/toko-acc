@@ -1,8 +1,31 @@
 @extends('layouts.app')
 
-@section('title', 'Portofolio Produksi | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', 'Portofolio Produksi Rubber & Medali | ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Jaya Promosi Lestari')
 
-@section('meta_description', 'Dokumentasi hasil pengerjaan produk custom rubber, medali kejuaraan, dan gantungan kunci oleh workshop Toko Jaya Promosi Lestari.')
+@section('meta_description', 'Dokumentasi hasil pengerjaan produk custom rubber PVC, cetak medali kejuaraan, dan gantungan kunci suvenir oleh workshop Jaya Promosi Lestari di Aksesorisku.store.')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portofolio",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
     <div class="bg-slate-50 min-h-screen py-10 sm:py-14 border-b border-slate-200">
@@ -15,8 +38,7 @@
                     Portofolio Hasil Produksi
                 </h1>
                 <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-                    Bukti pengerjaan berbagai pesanan medali turnamen, emblem rubber, dan gantungan kunci dari komunitas,
-                    sekolah, dan perusahaan.
+                    Dokumentasi pengerjaan pesanan medali turnamen, emblem rubber, dan gantungan kunci oleh workshop Jaya Promosi Lestari di Aksesorisku.store.
                 </p>
             </div>
 

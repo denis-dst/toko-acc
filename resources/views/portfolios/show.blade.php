@@ -1,19 +1,48 @@
 @extends('layouts.app')
 
-@section('title', $portfolio->title . ' | Portofolio ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', $portfolio->title . ' | Portofolio ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Jaya Promosi Lestari')
 
 @section('meta_description', Str::limit($portfolio->description, 160))
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portofolio",
+      "item": "{{ route('portfolios.index') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ $portfolio->title }}",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
 
     @php
-        $rawPhone = $siteSettings['whatsapp'] ?? '6281234567890';
+        $rawPhone = $siteSettings['whatsapp'] ?? '6282326170804';
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
         if (str_starts_with($cleanPhone, '0')) {
             $cleanPhone = '62' . substr($cleanPhone, 1);
         }
 
-        $portWaMessage = "Halo Toko Jaya Promosi Lestari, saya melihat hasil portofolio:\n\n*{$portfolio->title}*\n\nSaya tertarik untuk membuat produk sejenis dengan desain custom. Mohon info estimasi biaya dan minimal ordernya.\n\nTerima kasih.";
+        $portWaMessage = "Halo Aksesorisku.store (Jaya Promosi Lestari), saya melihat hasil portofolio:\n\n*{$portfolio->title}*\n\nSaya tertarik untuk membuat produk sejenis dengan desain custom. Mohon info estimasi biaya dan minimal ordernya.\n\nTerima kasih.";
         $portWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode($portWaMessage);
     @endphp
 

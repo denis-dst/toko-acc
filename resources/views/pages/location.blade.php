@@ -1,18 +1,41 @@
 @extends('layouts.app')
 
-@section('title', 'Tempat Produksi Offline & Workshop | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', 'Tempat Produksi Offline & Workshop | ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Jaya Promosi Lestari')
 
-@section('meta_description', 'Lokasi bengkel workshop tempat produksi rubber, medali dan gantungan kunci Toko Jaya Promosi Lestari.')
+@section('meta_description', 'Lokasi bengkel workshop tempat produksi aksesoris karet, print rubber, dan cetak medali Jaya Promosi Lestari di Aksesorisku.store.')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Lokasi Workshop",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
 
     @php
-        $rawPhone = $siteSettings['whatsapp'] ?? '6281234567890';
+        $rawPhone = $siteSettings['whatsapp'] ?? '6282326170804';
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
         if (str_starts_with($cleanPhone, '0')) {
             $cleanPhone = '62' . substr($cleanPhone, 1);
         }
-        $locWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Toko Jaya Promosi Lestari, saya ingin berkunjung ke workshop untuk melihat contoh sampel bahan langsung.");
+        $locWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Aksesorisku.store (Jaya Promosi Lestari), saya ingin berkunjung ke workshop untuk melihat contoh sampel bahan langsung.");
     @endphp
 
     <div class="bg-slate-50 min-h-screen py-12 sm:py-16 border-b border-slate-200">
@@ -22,11 +45,10 @@
             <div class="text-center max-w-3xl mx-auto">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block mb-1">Workshop Offline</span>
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-                    Lokasi Tempat Produksi
+                    Lokasi Workshop Jaya Promosi Lestari
                 </h1>
                 <p class="text-base text-slate-600 mt-3 leading-relaxed">
-                    Anda dipersilakan datang langsung ke workshop kami untuk melihat contoh fisik sampel karet, ketebalan
-                    medali cor, atau mendiskusikan konsep desain secara tatap muka.
+                    Anda dipersilakan datang langsung ke workshop kami di Bandung untuk melihat contoh fisik sampel karet rubber, ketebalan medali cor, atau mendiskusikan konsep desain secara tatap muka.
                 </p>
             </div>
 

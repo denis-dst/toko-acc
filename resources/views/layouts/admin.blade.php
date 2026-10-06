@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Panel') | {{ $siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari' }}</title>
+    <title>@yield('title', 'Admin Panel') | {{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,12 +29,11 @@
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
                 <div
                     class="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
-                    ACC
+                    AK
                 </div>
                 <div>
-                    <span class="block text-base font-bold text-white leading-tight">Admin Toko Jaya Promosi
-                        Lestari</span>
-                    <span class="block text-[11px] text-slate-400">Digital Showroom</span>
+                    <span class="block text-base font-bold text-white leading-tight">Aksesorisku.store</span>
+                    <span class="block text-[11px] text-slate-400">Jaya Promosi Lestari</span>
                 </div>
             </a>
         </div>

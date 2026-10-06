@@ -1,18 +1,41 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang Kami | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', 'Tentang Kami | ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Workshop Jaya Promosi Lestari')
 
-@section('meta_description', 'Profil workshop spesialis custom rubber PVC, medali kejuaraan dan gantungan kunci suvenir.')
+@section('meta_description', 'Aksesorisku.store adalah etalase dan digital showroom resmi dari workshop Jaya Promosi Lestari. Spesialis manufaktur custom rubber PVC, cetak medali kejuaraan, dan gantungan kunci suvenir.')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tentang Kami",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
 
     @php
-        $rawPhone = $siteSettings['whatsapp'] ?? '6281234567890';
+        $rawPhone = $siteSettings['whatsapp'] ?? '6282326170804';
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
         if (str_starts_with($cleanPhone, '0')) {
             $cleanPhone = '62' . substr($cleanPhone, 1);
         }
-        $aboutWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Toko Jaya Promosi Lestari, saya ingin berkonsultasi mengenai produksi merchandise custom.");
+        $aboutWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Aksesorisku.store (Jaya Promosi Lestari), saya ingin berkonsultasi mengenai produksi merchandise custom.");
     @endphp
 
     <div class="bg-slate-50 min-h-screen py-12 sm:py-16 border-b border-slate-200">
@@ -22,18 +45,17 @@
             <div class="text-center max-w-3xl mx-auto">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block mb-1">Profil Usaha</span>
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-                    Spesialis Produksi Rubber, Medali & Gantungan Kunci
+                    Spesialis Custom Rubber, Cetak Medali & Aksesoris Karet
                 </h1>
                 <p class="text-base text-slate-600 mt-4 leading-relaxed">
-                    Toko Jaya Promosi Lestari adalah workshop manufaktur kreatif yang memproduksi berbagai cinderamata,
-                    merchandise promosi, dan atribut penghargaan custom langsung dari bengkel produksi.
+                    <strong>Aksesorisku.store</strong> adalah platform digital showroom dan etalase resmi dari workshop <strong>Jaya Promosi Lestari</strong>, manufaktur kreatif yang memproduksi berbagai cinderamata, merchandise promosi, patch rubber velcro, dan atribut medali kejuaraan langsung dari bengkel produksi.
                 </p>
             </div>
 
             <!-- Hero Workshop Image -->
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-900">
                 <img src="{{ asset('images/workshop/workshop-1.jpg') }}"
-                    alt="Area Workshop Produksi Toko Jaya Promosi Lestari" class="w-full h-80 sm:h-[450px] object-cover">
+                    alt="Area Workshop Produksi Aksesorisku.store Jaya Promosi Lestari" class="w-full h-80 sm:h-[450px] object-cover">
             </div>
 
             <!-- Profil & Filosofi Pengerjaan -->

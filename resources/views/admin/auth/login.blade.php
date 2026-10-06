@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin Panel | {{ $siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari' }}</title>
+    <title>Login Admin Panel | {{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +26,10 @@
         <div class="text-center space-y-2">
             <div
                 class="w-12 h-12 rounded-2xl bg-slate-900 text-white font-extrabold text-xl flex items-center justify-center mx-auto shadow-md">
-                ACC
+                AK
             </div>
             <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Login Admin Panel</h1>
-            <p class="text-xs text-slate-500">Kelola katalog produk, portofolio, dan testimoni</p>
+            <p class="text-xs text-slate-500">Aksesorisku.store • Workshop Jaya Promosi Lestari</p>
         </div>
 
         @if($errors->any())

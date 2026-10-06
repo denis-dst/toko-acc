@@ -167,6 +167,34 @@
                 </div>
             </div>
 
+            <!-- Pengaturan SEO & Google Search Console -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
+                    5. Optimasi SEO & Google Search Console
+                </h3>
+
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label for="meta_keywords"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Target Keyword SEO</label>
+                        <input type="text" name="meta_keywords" id="meta_keywords"
+                            value="{{ old('meta_keywords', $settings['meta_keywords'] ?? 'aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom') }}"
+                            placeholder="aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali..."
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs">
+                    </div>
+
+                    <div>
+                        <label for="meta_google_verification"
+                            class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Kode Google Site Verification (Search Console)</label>
+                        <input type="text" name="meta_google_verification" id="meta_google_verification"
+                            value="{{ old('meta_google_verification', $settings['meta_google_verification'] ?? '') }}"
+                            placeholder="Contoh: google-site-verification=XXXXXXXXXXXXXXXXXXXX"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-mono">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Masukkan kode verifikasi HTML Tag dari Google Search Console untuk memverifikasi kepemilikan domain aksesorisku.store.</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="pt-6 border-t border-slate-100 flex items-center justify-end">
                 <button type="submit"
                     class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-md transition-colors">

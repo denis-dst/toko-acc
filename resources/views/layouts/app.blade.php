@@ -6,20 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Primary Title & Meta Tags -->
     <title>
-        @yield('title', ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari') . ' | ' . ($siteSettings['tagline'] ?? 'Spesialis Custom Rubber, Medali & Gantungan Kunci'))
+        @yield('title', ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' | ' . ($siteSettings['tagline'] ?? 'Pusat Custom Rubber, Cetak Medali & Aksesoris Karet - Jaya Promosi Lestari'))
     </title>
     <meta name="description"
-        content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom dan workshop pembuatan produk custom rubber PVC, medali kejuaraan, dan gantungan kunci suvenir.')">
+        content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom (print rubber, rubber patch, wristband), cetak medali kejuaraan (logam cor & akrilik), serta gantungan kunci suvenir oleh Jaya Promosi Lestari.')">
+    <meta name="keywords"
+        content="@yield('meta_keywords', $siteSettings['meta_keywords'] ?? 'aksesorisku.store, aksesorisku, jaya promosi lestari, aksesoris karet, print rubber, cetak medali, gantungan kunci karet, rubber patch velcro, medali kejuaraan custom, souvenir karet bandung, pabrik karet custom')">
+    <meta name="robots"
+        content="@yield('meta_robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')">
+    <meta name="author" content="Aksesorisku.store - Jaya Promosi Lestari">
     <link rel="canonical" href="{{ url()->current() }}">
 
-    <!-- Open Graph / Meta Sosial -->
-    <meta property="og:type" content="website">
+    @if(!empty($siteSettings['meta_google_verification']))
+        <meta name="google-site-verification" content="{{ $siteSettings['meta_google_verification'] }}">
+    @endif
+
+    <!-- Local SEO Geo Tags -->
+    <meta name="geo.region" content="ID-JB">
+    <meta name="geo.placename" content="Bandung, Jawa Barat, Indonesia">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:site_name" content="Aksesorisku.store - Jaya Promosi Lestari">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))">
+    <meta property="og:title"
+        content="@yield('title', ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' | ' . ($siteSettings['tagline'] ?? 'Pusat Custom Rubber, Cetak Medali & Aksesoris Karet'))">
     <meta property="og:description"
-        content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom produk custom rubber, medali dan gantungan kunci.')">
+        content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber, cetak medali kejuaraan, dan gantungan kunci oleh Jaya Promosi Lestari.')">
     <meta property="og:image" content="@yield('og_image', asset('images/products/rubber-keychain-1.jpg'))">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="@yield('title', ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' | ' . ($siteSettings['tagline'] ?? 'Pusat Custom Rubber, Cetak Medali & Aksesoris Karet'))">
+    <meta name="twitter:description"
+        content="@yield('meta_description', $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber, cetak medali kejuaraan, dan gantungan kunci.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/products/rubber-keychain-1.jpg'))">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "Manufacturer"],
+          "@id": "{{ url('/') }}/#organization",
+          "name": "{{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}",
+          "alternateName": [
+            "Jaya Promosi Lestari",
+            "Toko Jaya Promosi Lestari",
+            "Aksesorisku",
+            "Aksesoris Karet Jaya Promosi",
+            "Aksesorisku Store"
+          ],
+          "url": "{{ url('/') }}",
+          "logo": "{{ asset('images/products/rubber-keychain-1.jpg') }}",
+          "image": "{{ asset('images/products/rubber-keychain-1.jpg') }}",
+          "description": "{{ $siteSettings['description'] ?? 'Digital showroom dan workshop produsen aksesoris karet custom, print rubber PVC, cetak medali kejuaraan cor logam, dan gantungan kunci oleh Jaya Promosi Lestari.' }}",
+          "telephone": "{{ $siteSettings['phone'] ?? '+62 823-2617-0804' }}",
+          "email": "{{ $siteSettings['email'] ?? 'kontak@aksesorisku.store' }}",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $siteSettings['address'] ?? 'Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot' }}",
+            "addressLocality": "Kabupaten Bandung",
+            "addressRegion": "Jawa Barat",
+            "addressCountry": "ID"
+          },
+          "priceRange": "Rp 8.000 - Rp 50.000",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "08:00",
+              "closes": "17:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday"],
+              "opens": "08:00",
+              "closes": "15:00"
+            }
+          ],
+          "sameAs": [
+            @if(!empty($siteSettings['instagram'])) "{{ $siteSettings['instagram'] }}", @endif
+            @if(!empty($siteSettings['facebook'])) "{{ $siteSettings['facebook'] }}", @endif
+            @if(!empty($siteSettings['tiktok'])) "{{ $siteSettings['tiktok'] }}", @endif
+            "{{ url('/') }}"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Layanan Produksi Merchandise & Aksesoris Custom",
+            "itemListElement": [
+              {
+                "@type": "OfferCatalog",
+                "name": "Aksesoris Karet / Print Rubber PVC",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gantungan Kunci Karet 3D & 2D Custom" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rubber Patch Velcro & Emblem Karet Seragam" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wristband / Gelang Karet Custom" } }
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Cetak Medali Kejuaraan & Wisuda",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medali Logam Cor Zinc Alloy Die-Cast" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medali Akrilik Cetak UV & Grafir" } }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ url('/') }}/#website",
+          "url": "{{ url('/') }}",
+          "name": "{{ $siteSettings['site_name'] ?? 'Aksesorisku.store' }}",
+          "alternateName": "Aksesorisku - Jaya Promosi Lestari",
+          "publisher": {
+            "@id": "{{ url('/') }}/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ url('/katalog') }}?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+
+    @yield('schema_breadcrumb')
+    @yield('schema_product')
+    @yield('schema_faq')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,12 +162,12 @@
     class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen selection:bg-emerald-600 selection:text-white">
 
     @php
-        $rawPhone = $siteSettings['whatsapp'] ?? '6281234567890';
+        $rawPhone = $siteSettings['whatsapp'] ?? '6282326170804';
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
         if (str_starts_with($cleanPhone, '0')) {
             $cleanPhone = '62' . substr($cleanPhone, 1);
         }
-        $defaultWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Toko Jaya Promosi Lestari, saya ingin berkonsultasi mengenai pemesanan produk custom.");
+        $defaultWaUrl = 'https://wa.me/' . $cleanPhone . '?text=' . rawurlencode("Halo Aksesorisku.store (Jaya Promosi Lestari), saya ingin berkonsultasi mengenai pemesanan produk custom (Rubber/Medali/Gantungan Kunci).");
     @endphp
 
     <!-- Top Contact Bar (Desktop Only) -->
@@ -68,13 +190,13 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    <span>Sentra Workshop & Produksi Custom</span>
+                    <span>Workshop Resmi Jaya Promosi Lestari</span>
                 </span>
             </div>
             <div class="flex items-center space-x-5">
                 <a href="{{ $defaultWaUrl }}" target="_blank" rel="noopener noreferrer"
                     class="hover:text-emerald-400 transition-colors flex items-center gap-1">
-                    <span>WhatsApp: {{ $siteSettings['phone'] ?? '0812-3456-7890' }}</span>
+                    <span>WhatsApp: {{ $siteSettings['phone'] ?? '+62 823-2617-0804' }}</span>
                 </a>
                 <span class="text-slate-700">|</span>
                 <a href="{{ route('admin.login') }}" class="text-slate-400 hover:text-white transition-colors">Admin
@@ -91,15 +213,15 @@
                 <a href="{{ route('home') }}"
                     class="flex items-center gap-3 group focus:outline-hidden focus:ring-2 focus:ring-slate-900 rounded-lg p-1">
                     <div
-                        class="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg tracking-wider shadow-md group-hover:bg-slate-800 transition-colors">
-                        ACC
+                        class="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold text-base tracking-wider shadow-md group-hover:bg-slate-800 transition-colors">
+                        AK
                     </div>
                     <div>
                         <span class="block text-xl font-extrabold tracking-tight text-slate-900 leading-none">
-                            {{ $siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari' }}
+                            {{ $siteSettings['site_name'] ?? 'aksesorisku.store' }}
                         </span>
-                        <span class="block text-xs font-medium text-slate-500 mt-1 tracking-wide uppercase">
-                            Digital Showroom & Workshop
+                        <span class="block text-[11px] font-semibold text-emerald-700 mt-1 tracking-wide uppercase">
+                            Workshop Jaya Promosi Lestari
                         </span>
                     </div>
                 </a>
@@ -124,7 +246,7 @@
                             </svg>
                         </a>
                         <div
-                            class="absolute left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-slate-200 py-2 hidden group-hover:block hover:block z-50 animate-in fade-in duration-150">
+                            class="absolute left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2 hidden group-hover:block hover:block z-50 animate-in fade-in duration-150">
                             <a href="{{ route('products.index') }}"
                                 class="block px-4 py-2.5 text-xs font-bold text-slate-400 uppercase tracking-wider hover:bg-slate-50">
                                 Semua Produk Katalog
@@ -249,7 +371,7 @@
         @yield('content')
     </main>
 
-    <!-- Floating WhatsApp CTA (PRD Section 14) -->
+    <!-- Floating WhatsApp CTA -->
     <div class="fixed bottom-6 right-6 z-40 group">
         <a href="{{ $defaultWaUrl }}" target="_blank" rel="noopener noreferrer"
             class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:-translate-y-1 focus:outline-hidden focus:ring-4 focus:ring-emerald-400"
@@ -270,15 +392,20 @@
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 rounded-xl bg-white text-slate-900 flex items-center justify-center font-bold text-lg">
-                            ACC
+                            class="w-10 h-10 rounded-xl bg-white text-slate-900 flex items-center justify-center font-extrabold text-base">
+                            AK
                         </div>
-                        <span class="text-xl font-bold tracking-tight text-white">
-                            {{ $siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari' }}
-                        </span>
+                        <div>
+                            <span class="text-xl font-bold tracking-tight text-white block">
+                                {{ $siteSettings['site_name'] ?? 'aksesorisku.store' }}
+                            </span>
+                            <span class="text-[11px] font-semibold text-emerald-400 block uppercase tracking-wider">
+                                Jaya Promosi Lestari
+                            </span>
+                        </div>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        {{ $siteSettings['description'] ?? 'Digital showroom dan workshop pembuatan produk custom rubber PVC, medali kejuaraan, dan gantungan kunci suvenir.' }}
+                        {{ $siteSettings['description'] ?? 'Digital showroom dan workshop produsen spesialis custom rubber PVC, cetak medali kejuaraan, dan gantungan kunci suvenir.' }}
                     </p>
                     <div class="pt-2">
                         <span
@@ -345,16 +472,21 @@
                                 Hubungi Kami
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('sitemap') }}" class="text-slate-500 hover:text-slate-400 transition-colors text-xs">
+                                Sitemap XML
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Alamat & Jam Buka -->
                 <div class="space-y-3">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-white mb-4">
-                        Tempat Produksi & Jam Kerja
+                        Tempat Produksi & Workshop
                     </h3>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        {{ $siteSettings['address'] ?? 'Jl. Industri Kreatif No. 88, Sentra Workshop & Produksi' }}
+                        {{ $siteSettings['address'] ?? 'Jl. Sayuran Kavling Hiu Macan No. 40 RT 002 RW 008 Desa Cangkuang Kulon, Kec. Dayeuh Kolot, Kab. Bandung' }}
                     </p>
                     <div class="p-3 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs space-y-1">
                         <span class="block font-semibold text-slate-200">Jam Operasional:</span>
@@ -377,10 +509,18 @@
                 </div>
             </div>
 
+            <!-- SEO Quick Keywords Strip -->
+            <div class="mt-10 pt-6 border-t border-slate-800/80 text-[11px] text-slate-400 leading-relaxed">
+                <span class="font-bold text-slate-300 uppercase tracking-wider block mb-1">Spesialisasi Produksi Aksesorisku.store (Jaya Promosi Lestari):</span>
+                <p>
+                    Aksesoris Karet Custom • Print Rubber PVC • Cetak Medali Kejuaraan Cor Zinc Alloy • Gantungan Kunci Karet 3D / 2D • Rubber Patch Velcro Seragam & Tactical • Medali Lomba & Wisuda Logam Cor / Akrilik • Wristband & Gelang Karet Promosi • Souvenir Promosi Perusahaan & Komunitas.
+                </p>
+            </div>
+
             <!-- Bottom Copyright & Social -->
             <div
-                class="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari' }}. Hak cipta
+                class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; {{ date('Y') }} {{ $siteSettings['site_name'] ?? 'aksesorisku.store' }} (Jaya Promosi Lestari). Hak cipta
                     dilindungi undang-undang.</p>
                 <div class="flex items-center space-x-6">
                     @if(!empty($siteSettings['instagram']))

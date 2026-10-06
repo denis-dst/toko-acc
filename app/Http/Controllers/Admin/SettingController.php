@@ -34,6 +34,8 @@ class SettingController extends Controller
             'facebook',
             'tiktok',
             'youtube',
+            'meta_keywords',
+            'meta_google_verification',
         ];
 
         foreach ($fields as $field) {

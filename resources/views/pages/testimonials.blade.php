@@ -1,8 +1,31 @@
 @extends('layouts.app')
 
-@section('title', 'Ulasan & Testimoni Pelanggan | ' . ($siteSettings['site_name'] ?? 'Toko Jaya Promosi Lestari'))
+@section('title', 'Ulasan & Testimoni Pelanggan | ' . ($siteSettings['site_name'] ?? 'Aksesorisku.store') . ' - Jaya Promosi Lestari')
 
-@section('meta_description', 'Ulasan pengalaman nyata pemesan produk custom rubber, medali dan gantungan kunci di workshop Toko Jaya Promosi Lestari.')
+@section('meta_description', 'Ulasan nyata pemesan aksesoris karet custom, print rubber, dan medali kejuaraan di workshop Aksesorisku.store (Jaya Promosi Lestari).')
+
+@section('schema_breadcrumb')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Testimoni",
+      "item": "{{ url()->current() }}"
+    }
+  ]
+}
+</script>
+@endsection
 
 @section('content')
 <div class="bg-slate-50 min-h-screen py-12 sm:py-16 border-b border-slate-200">
@@ -12,10 +35,10 @@
         <div class="text-center max-w-3xl mx-auto">
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block mb-1">Kepuasan Pemesan</span>
             <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-                Testimoni & Ulasan Pelanggan
+                Testimoni Pelanggan Aksesorisku.store
             </h1>
             <p class="text-base text-slate-600 mt-3 leading-relaxed">
-                Reputasi pengerjaan kami dibangun melalui ketepatan hasil fisik produk dan komunikasi yang transparan bersama seluruh pelanggan.
+                Reputasi pengerjaan kami dibangun melalui ketepatan fisik produk karet dan medali, serta komunikasi transparan workshop Jaya Promosi Lestari.
             </p>
         </div>
 

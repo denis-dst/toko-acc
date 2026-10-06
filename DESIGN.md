@@ -1,6 +1,9 @@
-# DESIGN DIRECTION — Toko Jaya Promosi Lestari (DIGITAL SHOWROOM & E-KATALOG)
+# DESIGN DIRECTION: Aksesorisku.store (DIGITAL SHOWROOM & WORKSHOP JAYA PROMOSI LESTARI)
 
 ## 1. Identity & Purpose
+- **Website & Domain:** `aksesorisku.store` (Official Digital Showroom & Workshop)
+- **Workshop Asal:** Jaya Promosi Lestari
+- **Target Keywords:** Jaya Promosi Lestari, Aksesoris Karet, Aksesorisku, Print Rubber, Cetak Medali, Gantungan Kunci Karet, Rubber Patch Velcro, Medali Kejuaraan Logam Cor.
 - **Brand Purpose:** Digital showroom dan etalase resmi untuk produsen custom merchandise spesialis: Rubber (karet custom), Medali (logam/akrilik kejuaraan & event), dan Gantungan Kunci custom.
 - **Model Interaksi:** Showcase & Konsultasi. Konversi utama melalui WhatsApp Direct Consultation ("Tanya Harga & Diskusi Desain").
 - **Target Audiens:** Individu (komunitas, suvenir), Organisasi/Sekolah/Event Organizer, dan Perusahaan (merchandise B2B).
