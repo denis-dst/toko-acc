@@ -35,7 +35,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     @php
-        $rawVerification = $siteSettings['meta_google_verification'] ?? '9Gew-qEbKHJjk-C3SbZRtVwI0nUo4SFLJVGHwOkqd8Y';
+        $rawVerification = $siteSettings['meta_google_verification'] ?? 'VMY0kiJJCCzv_Zxbm6PSJRwJ1tSfvDpvhc8VHU3fTMQ';
         $googleVerificationCode = str_replace('google-site-verification=', '', $rawVerification);
     @endphp
     @if(!empty($googleVerificationCode))
